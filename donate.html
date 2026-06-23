@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Ủng hộ dự án</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .donate-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .donate-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .title {
+            color: #111827;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .qr-container {
+            background-color: #f9fafb;
+            border: 2px dashed #e5e7eb;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .qr-image {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .bank-info {
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: #6b7280;
+        }
+
+        .info-value {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #10b981;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="donate-card">
+		<a data-flickr-embed="true" href="https://www.flickr.com/photos/198592040@N02/55271468353/in/dateposted-public/" title="Logo_01"><img src="https://live.staticflickr.com/65535/55271468353_6a4a36346a_q.jpg" width="75" height="75" alt="Logo_01"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+        <h2 class="title">Buy me a Potion 🍾</h2>
+        <p class="subtitle">Sự ủng hộ của bạn là động lực rất lớn để FFFCVN tiếp tục phát triển.</p>
+
+        <div class="qr-container">
+            <!-- Thay link ảnh bằng link ảnh mã QR thực tế của bạn -->
+            <a data-flickr-embed="true" href="https://www.flickr.com/photos/198592040@N02/55270410297/in/dateposted-public/" title="IMG_8993"><img src="https://live.staticflickr.com/65535/55270410297_87f32803bb_w.jpg" width="339" height="400" alt="IMG_8993"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+        </div>
+
+        <div class="bank-info">
+            <div class="info-row">
+                <span class="info-label">Ngân hàng:</span>
+                <span class="info-value">BIDV</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Tên tài khoản:</span>
+                <span class="info-value">DANG TUNG LAM</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Số tài khoản:</span>
+                <span class="info-value" id="account-number">2110633634</span>
+            </div>
+        </div>
+
+        <button class="copy-btn" onclick="copyAccountNumber()">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            Sao chép số tài khoản
+        </button>	
+    </div>
+
+    <div id="toast" class="toast">Đã sao chép số tài khoản!</div>
+
+    <script>
+        function copyAccountNumber() {
+            var accountNumber = document.getElementById("account-number").innerText;
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                var toast = document.getElementById("toast");
+                toast.className = "toast show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            }, function(err) {
+                console.error('Không thể sao chép: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
