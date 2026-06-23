@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Fantasy Fan Club VN</title>
-	
-	<link rel="icon" type="image/png" href="Logo_01.png">
+    
+    <link rel="icon" type="image/png" href="Logo_01.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -58,10 +58,9 @@
         /* CSS tùy chỉnh cho hình ảnh Logo */
         .logo {
             width: 100%;
-            max-width: 500px; /* Giới hạn độ rộng tối đa để logo không bị quá to trên màn hình máy tính */
+            max-width: 500px;
             height: auto;
             margin-bottom: 15px;
-            /* Phủ thêm một chút bóng mờ để logo nổi bật hơn trên nền */
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
         }
 
@@ -132,20 +131,62 @@
             transform: scale(1.15);
         }
 
+        /* --- CSS CHO NÚT DONATE NHỎ --- */
+        .donate-btn {
+            margin-top: 40px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 30px; /* Bo tròn hoàn toàn tạo cảm giác nhỏ nhắn */
+            text-decoration: none;
+            color: var(--text-color);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .donate-btn i {
+            color: #d63031; /* Màu đỏ cho biểu tượng trái tim */
+            font-size: 1.1rem;
+            transition: color 0.4s ease;
+        }
+
+        .donate-btn:hover {
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+            border-color: var(--hover-bg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .donate-btn:hover i {
+            color: var(--hover-text); /* Đổi màu trái tim sang trắng khi hover */
+        }
+
         /* Footer */
         .footer {
-            margin-top: 60px;
+            margin-top: 40px; /* Giảm margin-top một chút để nhường chỗ cho nút Donate */
             font-size: 0.8rem;
             color: #666666;
             letter-spacing: 1px;
             text-align: center;
             z-index: 10;
+            padding-bottom: 20px;
         }
 
         /* Responsive cho điện thoại */
         @media (max-width: 600px) {
             .logo {
-                max-width: 300px; /* Thu nhỏ logo lại khi xem trên điện thoại */
+                max-width: 300px;
             }
             .links-container {
                 grid-template-columns: 1fr;
@@ -160,6 +201,9 @@
                 margin-bottom: 0;
                 margin-right: 20px;
                 font-size: 1.8rem;
+            }
+            .donate-btn {
+                margin-top: 30px;
             }
         }
     </style>
@@ -193,9 +237,13 @@
         </a>
     </main>
 
+    <a href="LINK_DONATE_CUA_BAN_O_DAY" class="donate-btn">
+        <i class="fa-solid fa-heart"></i> Donate
+    </a>
+
     <footer class="footer">
         <p>The Crystal Protects. © <span id="currentYear"></span></p>
-		<p>FFFCVN.NET</p>
+        <p>FFFCVN.NET</p>
     </footer>
 
     <script>
