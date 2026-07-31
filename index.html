@@ -82,7 +82,11 @@
             padding: 0 20px;
             z-index: 10;
         }
-
+        .links-container .link-card:last-child {
+            grid-column: 1 / -1;       /* Ép ô này chiếm trọn cả 2 cột */
+            justify-self: center;      /* Căn ô vào giữa */
+            width: calc(50% - 12.5px); /* Tính toán sao cho ô rộng bằng đúng 1 ô bình thường (vì gap là 25px) */
+        }
         /* Thiết kế từng khối link (Hiệu ứng Kính mờ trên nền sáng) */
         .link-card {
             display: flex;
@@ -204,6 +208,10 @@
             }
             .donate-btn {
                 margin-top: 30px;
+            }
+            .links-container .link-card:last-child {
+            grid-column: auto;
+            width: 100%; 
             }
         }
     </style>
